@@ -50,5 +50,7 @@ namespace PONTO.DOMAIN.Entidades
         [MaxLength(20)]
         public string? Matricula { get; set; }
 
+        public DateTime DataCadastro { get; set; }
+
     }
 }

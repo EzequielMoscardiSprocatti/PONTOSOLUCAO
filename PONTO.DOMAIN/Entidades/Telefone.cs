@@ -29,5 +29,7 @@ namespace PONTO.DOMAIN.Entidades
 
         [MaxLength(20)]
         public string? StatusTelefone { get; set; }
+
+        public DateTime DataCadastro { get; set; }
     }
 }

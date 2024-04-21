@@ -18,7 +18,7 @@ namespace PONTO.DOMAIN.Entidades
         public string? Nome { get; set; }
 
         [Required, MaxLength(20)]
-        public string? Cpf { get; set; }
+        public string? CPF { get; set; }
 
         [Required, MaxLength(20)]
         public string? RG { get; set; }
@@ -42,6 +42,7 @@ namespace PONTO.DOMAIN.Entidades
         public string? StatusCad { get; set; }
 
         public DateTime DataCadastro { get; set; }
+
 
     }
 }

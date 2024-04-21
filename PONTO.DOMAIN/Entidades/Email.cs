@@ -26,5 +26,7 @@ namespace PONTO.DOMAIN.Entidades
         public int ScoreInterno { get; set; }
 
         public DateTime DataCadastro { get; set; }
+
+
     }
 }
