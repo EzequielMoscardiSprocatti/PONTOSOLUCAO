@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PONTO.DAO;
 
@@ -11,9 +12,11 @@ using PONTO.DAO;
 namespace PONTO.DAO.Migrations
 {
     [DbContext(typeof(appDbContext))]
-    partial class appDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240422035048_tbEmail_v1")]
+    partial class tbEmail_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,35 +211,28 @@ namespace PONTO.DAO.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("IdDisparo"));
 
                     b.Property<string>("CPF")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CanalEnvio")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("DataEnvio")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(120)
-                        .HasColumnType("varchar(120)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NomeCliente")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NomeMailing")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("StatusEnvio")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Telefone")
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("IdDisparo");
 

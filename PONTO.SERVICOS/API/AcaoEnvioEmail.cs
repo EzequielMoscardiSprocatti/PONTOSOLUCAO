@@ -133,7 +133,7 @@ namespace PONTO.SERVICOS.API
             return status;
         }
 
-        public string EnvioViaSSMTP(DisparosAcaoMkt acaoMkt, string Apresentacao, string TituloEmail, string CorpoEmail, string assinatura)
+        public async Task<string> EnvioViaSSMTPAsync(DisparosAcaoMkt acaoMkt, string Apresentacao, string TituloEmail, string CorpoEmail, string assinatura)
         {
             string  StatusEnvio = "";
 
@@ -165,8 +165,8 @@ namespace PONTO.SERVICOS.API
                 try
                 {
                     client.Send(mail);
-                    
-                    
+                    acaoMkt.StatusEnvio = "Enviado";
+                    var result = await envioAcao.InsertDados(acaoMkt);
 
                     return StatusEnvio = "Enviado";
                 }

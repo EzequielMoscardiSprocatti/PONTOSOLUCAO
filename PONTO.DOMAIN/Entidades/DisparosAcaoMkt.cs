@@ -11,13 +11,27 @@ namespace PONTO.DOMAIN.Entidades
     {
         [Key]
         public int IdDisparo { get; set; }
-        public string NomeCliente { get; set; }
-        public string CPF { get; set; }
-        public string CanalEnvio { get; set; }
-        public string Email { get; set; }
-        public string Telefone { get; set; }
-        public string NomeMailing { get; set; }
-        public string StatusEnvio { get; set; }
+
+        [MaxLength(150)]
+        public string? NomeCliente { get; set; }
+
+        [MaxLength(20)]
+        public string? CPF { get; set; }
+
+        [MaxLength(20)]
+        public string? CanalEnvio { get; set; }
+
+        [MaxLength(120)]
+        public string? Email { get; set; }
+
+        [MaxLength(20)]
+        public string? Telefone { get; set; }
+
+        [MaxLength(50)]
+        public string? NomeMailing { get; set; }
+
+        [MaxLength(20)]
+        public string? StatusEnvio { get; set; }
         public DateTime DataEnvio { get; set; }
     }
 }

@@ -91,9 +91,9 @@ namespace PONTO.BOT.Views.AcaoMassiva
                             NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString()
                         };
 
-                        var result = AcaoEmailMkt.EnvioViaSSMTP(envioAcao, "", 
+                        var result = AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "", 
                             DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(), 
-                            txtCorpoMsg.Text, 
+                            txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente), 
                             DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
 
 
