@@ -141,6 +141,8 @@ namespace PONTO.BOT.Views.ImportacaoBase
             /*                        
             HISTÓRICO            
              */
+
+            lblLayout.Text = cbxTemplate.Text;
         }
 
         private void BtnImportaBase_Click(object sender, EventArgs e)
@@ -152,17 +154,19 @@ namespace PONTO.BOT.Views.ImportacaoBase
             lblTotal.Text = DgvImportBase.RowCount.ToString();
         }
 
-        private void ProcessarBase_Click(object sender, EventArgs e)
+        private async void ProcessarBase_Click(object sender, EventArgs e)
         {
             var db = new appDbContext();
 
             progressBar.Maximum = DgvImportBase.Rows.Count;
 
-            for (int i = 0; i < DgvImportBase.Rows.Count-1; i++)
+
+            for (int i = 0; i < DgvImportBase.Rows.Count - 1; i++)
             {
 
                 if (cbxTemplate.Text == "CLIENTE")
                 {
+
                     Cliente cliente = new Cliente
                     {
                         Aposentado = DgvImportBase.Rows[i].Cells["Aposentado"].Value.ToString(),
@@ -174,8 +178,8 @@ namespace PONTO.BOT.Views.ImportacaoBase
                         NomeMae = DgvImportBase.Rows[i].Cells["NomeMae"].Value.ToString(),
                         NomePai = DgvImportBase.Rows[i].Cells["NomePai"].Value.ToString(),
                         RG = DgvImportBase.Rows[i].Cells["RG"].Value.ToString(),
-                        StatusCad = DgvImportBase.Rows[i].Cells["StatusCad"].Value.ToString(),                        
-                        
+                        StatusCad = DgvImportBase.Rows[i].Cells["StatusCad"].Value.ToString(),
+
                     };
 
 
@@ -193,15 +197,15 @@ namespace PONTO.BOT.Views.ImportacaoBase
                 {
                     Beneficios beneficios = new Beneficios
                     {
-                        Tipo = DgvImportBase[0, i].Value.ToString(),
-                        CPF = DgvImportBase[1, i].Value.ToString(),
-                        Matricula = DgvImportBase[2, i].Value.ToString(),
-                        ConvenioOrgao = DgvImportBase[3, i].Value.ToString(),
-                        Consignatorio = DgvImportBase[4, i].Value.ToString(),
-                        ValorBeneficio = DgvImportBase[5, i].Value.ToString(),
-                        RegistroFuncional = DgvImportBase[6, i].Value.ToString(),
-                        TempoRegistro = DgvImportBase[7, i].Value.ToString(),
-                        StatusBenef = DgvImportBase[8, i].Value.ToString(),
+                        Tipo = DgvImportBase.Rows[i].Cells["Tipo"].Value.ToString(),
+                        CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
+                        Matricula = DgvImportBase.Rows[i].Cells["Matricula"].Value.ToString(),
+                        ConvenioOrgao = DgvImportBase.Rows[i].Cells["ConvenioOrgao"].Value.ToString(),
+                        Consignatorio = DgvImportBase.Rows[i].Cells["Consignatorio"].Value.ToString(),
+                        ValorBeneficio = DgvImportBase.Rows[i].Cells["ValorBeneficio"].Value.ToString(),
+                        RegistroFuncional = DgvImportBase.Rows[i].Cells["RegistroFuncional"].Value.ToString(),
+                        TempoRegistro = DgvImportBase.Rows[i].Cells["TempoRegistro"].Value.ToString(),
+                        StatusBenef = DgvImportBase.Rows[i].Cells["StatusBenef"].Value.ToString(),
                         DataCadastro = DateTime.Now
                     };
 
@@ -213,16 +217,16 @@ namespace PONTO.BOT.Views.ImportacaoBase
                 {
                     Emprestimo emprestimo = new Emprestimo
                     {
-                        Contrato = DgvImportBase[0, i].Value.ToString(),
-                        Tipo = DgvImportBase[1, i].Value.ToString(),
-                        CPF = DgvImportBase[2, i].Value.ToString(),
-                        Matricula  = DgvImportBase[3, i].Value.ToString(),
-                        Orgao = DgvImportBase[4, i].Value.ToString(),
-                        ValorParcela = DgvImportBase[5, i].Value.ToString(),
-                        DataContracao = DateTime.Parse(DgvImportBase[6, i].Value.ToString()),
-                        QtdParcelas = int.Parse(DgvImportBase[7, i].Value.ToString()),
-                        ParcelasPagas = int.Parse(DgvImportBase[8, i].Value.ToString()),
-                        Empregador = DgvImportBase[9, i].Value.ToString(),
+                        Contrato = DgvImportBase.Rows[i].Cells["Contrato"].Value.ToString(),
+                        Tipo = DgvImportBase.Rows[i].Cells["Tipo"].Value.ToString(),
+                        CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
+                        Matricula = DgvImportBase.Rows[i].Cells["Matricula"].Value.ToString(),
+                        Orgao = DgvImportBase.Rows[i].Cells["Orgao"].Value.ToString(),
+                        ValorParcela = DgvImportBase.Rows[i].Cells["ValorParcela"].Value.ToString(),
+                        DataContracao = DateTime.Parse(DgvImportBase.Rows[i].Cells["DataContracao"].Value.ToString()),
+                        QtdParcelas = int.Parse(DgvImportBase.Rows[i].Cells["QtdParcelas"].Value.ToString()),
+                        ParcelasPagas = int.Parse(DgvImportBase.Rows[i].Cells["ParcelasPagas"].Value.ToString()),
+                        Empregador = DgvImportBase.Rows[i].Cells["Empregador"].Value.ToString(),
                         DataCadastro = DateTime.Now
 
                     };
@@ -236,7 +240,7 @@ namespace PONTO.BOT.Views.ImportacaoBase
                 {
                     Contratacao contratacao = new Contratacao
                     {
-                     
+
                         Nome = DgvImportBase.Rows[i].Cells["Nome"].Value.ToString(),
                         CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
                         Rg = DgvImportBase.Rows[i].Cells["Rg"].Value.ToString(),
@@ -284,7 +288,7 @@ namespace PONTO.BOT.Views.ImportacaoBase
                 {
                     Email email = new Email
                     {
-                       
+
                         CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
                         EmailCliente = DgvImportBase.Rows[i].Cells["EmailCliente"].Value.ToString(),
                         StatusEmail = DgvImportBase.Rows[i].Cells["StatusEmail"].Value.ToString(),
@@ -293,6 +297,7 @@ namespace PONTO.BOT.Views.ImportacaoBase
                     };
 
                     var cadEmail = db.Emails.Where(a => a.EmailCliente == email.EmailCliente).FirstOrDefault();
+
 
                     if (cadEmail == null)
                     {
@@ -314,5 +319,7 @@ namespace PONTO.BOT.Views.ImportacaoBase
 
 
         }
+
+     
     }
 }

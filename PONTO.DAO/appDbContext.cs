@@ -29,6 +29,8 @@ namespace PONTO.DAO
 
         public DbSet<Telefone> Telefones { get; set; }
 
+        public DbSet<DisparosAcaoMkt> disparosAcaos { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

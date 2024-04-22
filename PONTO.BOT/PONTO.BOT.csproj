@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PONTO.DAO\PONTO.DAO.csproj" />
     <ProjectReference Include="..\PONTO.DOMAIN\PONTO.DOMAIN.csproj" />
+    <ProjectReference Include="..\PONTO.SERVICOS\PONTO.SERVICOS.csproj" />
   </ItemGroup>
 
 </Project>

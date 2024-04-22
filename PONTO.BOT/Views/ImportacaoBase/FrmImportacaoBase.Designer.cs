@@ -45,6 +45,7 @@
             // 
             // DgvImportBase
             // 
+            DgvImportBase.BackgroundColor = Color.White;
             DgvImportBase.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgvImportBase.Location = new Point(0, 91);
             DgvImportBase.Name = "DgvImportBase";

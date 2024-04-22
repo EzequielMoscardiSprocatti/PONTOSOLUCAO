@@ -33,6 +33,9 @@
             gestãoBaseToolStripMenuItem = new ToolStripMenuItem();
             importaçãoToolStripMenuItem = new ToolStripMenuItem();
             importaBaseToolStripMenuItem = new ToolStripMenuItem();
+            serviçosToolStripMenuItem = new ToolStripMenuItem();
+            açãoMassivaToolStripMenuItem = new ToolStripMenuItem();
+            BtnEnvioMkt = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +51,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gestãoBaseToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestãoBaseToolStripMenuItem, serviçosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(785, 24);
@@ -66,15 +69,36 @@
             // 
             importaçãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { importaBaseToolStripMenuItem });
             importaçãoToolStripMenuItem.Name = "importaçãoToolStripMenuItem";
-            importaçãoToolStripMenuItem.Size = new Size(180, 22);
+            importaçãoToolStripMenuItem.Size = new Size(135, 22);
             importaçãoToolStripMenuItem.Text = "Importação";
             // 
             // importaBaseToolStripMenuItem
             // 
             importaBaseToolStripMenuItem.Name = "importaBaseToolStripMenuItem";
-            importaBaseToolStripMenuItem.Size = new Size(180, 22);
+            importaBaseToolStripMenuItem.Size = new Size(143, 22);
             importaBaseToolStripMenuItem.Text = "Importa Base";
             importaBaseToolStripMenuItem.Click += importaBaseToolStripMenuItem_Click;
+            // 
+            // serviçosToolStripMenuItem
+            // 
+            serviçosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { açãoMassivaToolStripMenuItem });
+            serviçosToolStripMenuItem.Name = "serviçosToolStripMenuItem";
+            serviçosToolStripMenuItem.Size = new Size(62, 20);
+            serviçosToolStripMenuItem.Text = "Serviços";
+            // 
+            // açãoMassivaToolStripMenuItem
+            // 
+            açãoMassivaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { BtnEnvioMkt });
+            açãoMassivaToolStripMenuItem.Name = "açãoMassivaToolStripMenuItem";
+            açãoMassivaToolStripMenuItem.Size = new Size(180, 22);
+            açãoMassivaToolStripMenuItem.Text = "Ação Massiva";
+            // 
+            // BtnEnvioMkt
+            // 
+            BtnEnvioMkt.Name = "BtnEnvioMkt";
+            BtnEnvioMkt.Size = new Size(180, 22);
+            BtnEnvioMkt.Text = "Disparos";
+            BtnEnvioMkt.Click += BtnEnvioMkt_Click;
             // 
             // FrmMenuPrincipal
             // 
@@ -99,5 +123,8 @@
         private ToolStripMenuItem gestãoBaseToolStripMenuItem;
         private ToolStripMenuItem importaçãoToolStripMenuItem;
         private ToolStripMenuItem importaBaseToolStripMenuItem;
+        private ToolStripMenuItem serviçosToolStripMenuItem;
+        private ToolStripMenuItem açãoMassivaToolStripMenuItem;
+        private ToolStripMenuItem BtnEnvioMkt;
     }
 }

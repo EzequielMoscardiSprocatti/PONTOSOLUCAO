@@ -1,4 +1,5 @@
-﻿using PONTO.BOT.Views.ImportacaoBase;
+﻿using PONTO.BOT.Views.AcaoMassiva;
+using PONTO.BOT.Views.ImportacaoBase;
 using PONTO.DAO;
 using PONTO.DOMAIN.Entidades;
 using System;
@@ -48,6 +49,12 @@ namespace PONTO.BOT.Views
         {
             FrmImportacaoBase importacaoBase = new FrmImportacaoBase();
             importacaoBase.Show();
+        }
+
+        private void BtnEnvioMkt_Click(object sender, EventArgs e)
+        {
+            FrmDisparosAcao frmDisparos = new FrmDisparosAcao();
+            frmDisparos.Show();
         }
     }
 }
