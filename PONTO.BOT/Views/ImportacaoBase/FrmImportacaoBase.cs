@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace PONTO.BOT.Views.ImportacaoBase
 {
     public partial class FrmImportacaoBase : Form
@@ -320,6 +321,42 @@ namespace PONTO.BOT.Views.ImportacaoBase
 
         }
 
-     
+        private void BtnBulk_Click(object sender, EventArgs e)
+        {
+            var db = new appDbContext();
+
+            progressBar.Maximum = DgvImportBase.Rows.Count;
+
+
+            List<Email> dadosList = new List<Email>();
+
+            try
+            {
+                for (int i = 0; i < DgvImportBase.RowCount; i++)
+                {
+                    Email dados = new Email
+                    {
+                        CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
+                        EmailCliente = DgvImportBase.Rows[i].Cells["EmailCliente"].Value.ToString(),
+                        StatusEmail = DgvImportBase.Rows[i].Cells["StatusEmail"].Value.ToString(),
+                        ScoreInterno = int.Parse(DgvImportBase.Rows[i].Cells["ScoreInterno"].Value.ToString()),
+                        DataCadastro = DateTime.Now
+                    };
+
+                    dadosList.Add(dados);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+            using (var dbContext = new appDbContext())
+            {
+                dbContext.BulkInsert(dadosList); 
+            }
+
+        }
     }
 }

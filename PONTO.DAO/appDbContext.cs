@@ -38,6 +38,7 @@ namespace PONTO.DAO
             if (!options.IsConfigured)
             {
                 var connString = "Server=82.180.153.154;Database=u165745573_pontopromotora;Uid=u165745573_pontopromotora;Pwd=8!Ezeq1234;";
+                //var connString = "Server=192.168.15.137;Database=db_ponto_prod;Uid=root;Pwd=root;";
                 options.UseMySql(connString, ServerVersion.AutoDetect(connString));
             }
         }

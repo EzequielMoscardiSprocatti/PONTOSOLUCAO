@@ -40,6 +40,7 @@
             lblTotalFeito = new Label();
             label4 = new Label();
             lblLayout = new Label();
+            BtnBulk = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvImportBase).BeginInit();
             SuspendLayout();
             // 
@@ -58,13 +59,13 @@
             cbxTemplate.Items.AddRange(new object[] { "CLIENTE", "BENEFÍCIOS", "EMPRÉSTIMOS", "CONTRATAÇÃO", "TELEFONE", "EMAIL", "HISTÓRICO", "BASE ROBÔ" });
             cbxTemplate.Location = new Point(6, 22);
             cbxTemplate.Name = "cbxTemplate";
-            cbxTemplate.Size = new Size(245, 23);
+            cbxTemplate.Size = new Size(216, 23);
             cbxTemplate.TabIndex = 1;
             cbxTemplate.Text = "SELECIONE UM TEMPLATE";
             // 
             // BtnCarregarTemplate
             // 
-            BtnCarregarTemplate.Location = new Point(257, 22);
+            BtnCarregarTemplate.Location = new Point(228, 22);
             BtnCarregarTemplate.Name = "BtnCarregarTemplate";
             BtnCarregarTemplate.Size = new Size(150, 23);
             BtnCarregarTemplate.TabIndex = 2;
@@ -74,9 +75,9 @@
             // 
             // BtnImportaBase
             // 
-            BtnImportaBase.Location = new Point(413, 22);
+            BtnImportaBase.Location = new Point(384, 22);
             BtnImportaBase.Name = "BtnImportaBase";
-            BtnImportaBase.Size = new Size(129, 23);
+            BtnImportaBase.Size = new Size(105, 23);
             BtnImportaBase.TabIndex = 3;
             BtnImportaBase.Text = "Importa Base";
             BtnImportaBase.UseVisualStyleBackColor = true;
@@ -84,9 +85,9 @@
             // 
             // ProcessarBase
             // 
-            ProcessarBase.Location = new Point(548, 22);
+            ProcessarBase.Location = new Point(495, 22);
             ProcessarBase.Name = "ProcessarBase";
-            ProcessarBase.Size = new Size(150, 23);
+            ProcessarBase.Size = new Size(124, 23);
             ProcessarBase.TabIndex = 4;
             ProcessarBase.Text = "Iniciar Processo";
             ProcessarBase.UseVisualStyleBackColor = true;
@@ -153,11 +154,22 @@
             lblLayout.TabIndex = 11;
             lblLayout.Text = "SEM LAYOUT";
             // 
+            // BtnBulk
+            // 
+            BtnBulk.Location = new Point(625, 22);
+            BtnBulk.Name = "BtnBulk";
+            BtnBulk.Size = new Size(102, 23);
+            BtnBulk.TabIndex = 12;
+            BtnBulk.Text = "Processo Bulk";
+            BtnBulk.UseVisualStyleBackColor = true;
+            BtnBulk.Click += BtnBulk_Click;
+            // 
             // FrmImportacaoBase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 457);
+            Controls.Add(BtnBulk);
             Controls.Add(lblLayout);
             Controls.Add(label4);
             Controls.Add(lblTotalFeito);
@@ -191,5 +203,6 @@
         private Label lblTotalFeito;
         private Label label4;
         private Label lblLayout;
+        private Button BtnBulk;
     }
 }
