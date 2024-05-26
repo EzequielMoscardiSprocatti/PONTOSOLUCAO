@@ -79,45 +79,7 @@ namespace PONTO.BOT.Views.AcaoMassiva
             if (cbxTemplate.Text == "EMAIL")
             {
 
-                await Task.Run(() => EnvioEmail());
-                //await EnvioEmail();
-
-                //for (int i = 0; i < DgvImportBase.Rows.Count; i++)
-                //{
-                //    try
-                //    {
-                //        DisparosAcaoMkt envioAcao = new DisparosAcaoMkt
-                //        {
-                //            CanalEnvio = "EMAIL",
-                //            CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
-                //            DataEnvio = DateTime.Now,
-                //            Email = DgvImportBase.Rows[i].Cells["Email"].Value.ToString(),
-                //            NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString()
-                //        };
-
-                //        var result = AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "",
-                //            DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(),
-                //            txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente),
-                //            DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
-
-                //        try
-                //        {
-                //            DgvImportBase.Rows[i].Cells["StatusEnvio"].Value = result;
-                //            DgvImportBase.Rows[i].Cells["DataEnvio"].Value = DateTime.Now.ToString();
-                //        }
-                //        catch (Exception)
-                //        {
-
-                //        }
-
-                //    }
-                //    catch (Exception)
-                //    {
-
-                //    }
-
-
-                //}
+                await Task.Run(() => EnvioEmail()); 
 
             }
         }
@@ -139,17 +101,30 @@ namespace PONTO.BOT.Views.AcaoMassiva
                         DataEnvio = DateTime.Now,
                         Email = DgvImportBase.Rows[i].Cells["Email"].Value.ToString(),
                         NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString()
+                        
                     };
 
-                    //var result = await AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "",
-                    //    DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(),
-                    //    txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente),
-                    //    DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
+                    try
+                    {
+                        if(DgvImportBase.Rows[i].Cells["Assinatura"].Value == null || DgvImportBase.Rows[i].Cells["Assinatura"].Value == "")
+                        {
+                            DgvImportBase.Rows[i].Cells["Assinatura"].Value = "-";
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        DgvImportBase.Rows[i].Cells["Assinatura"].Value = "-";
+                    }
+
+                    var result = await AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "",
+                        DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(),
+                        txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente),
+                        DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
 
                     System.Threading.Thread.Sleep(10);
                     try
                     {
-                        DgvImportBase.Rows[i].Cells["StatusEnvio"].Value = "result";
+                        DgvImportBase.Rows[i].Cells["StatusEnvio"].Value = result;
                         DgvImportBase.Rows[i].Cells["DataEnvio"].Value = DateTime.Now.ToString();
                     }
                     catch (Exception)
