@@ -424,7 +424,7 @@ namespace PONTO.BOT.Funcoes
 
         }
 
-        public void ImportCSV(DataGridView dataGridView)
+        public async Task ImportCSV(DataGridView dataGridView)
         {
             int linha = 0;
             string rota = "";
@@ -444,8 +444,7 @@ namespace PONTO.BOT.Funcoes
             }
 
             // Read the file and display it line by line.  
-            System.IO.StreamReader file =
-                new System.IO.StreamReader(rota);
+            System.IO.StreamReader file = new System.IO.StreamReader(rota);
             while ((line = file.ReadLine()) != null)
             {
                 if (linha != 0)
@@ -454,6 +453,11 @@ namespace PONTO.BOT.Funcoes
                     try
                     {
                         string[] dados = line.Split(';', ',');
+
+                        if (dados.Count() == 1)
+                        {
+                            dataGridView.Rows.Add(dados[0]);
+                        }
                         if (dados.Count() == 2)
                         {
                             dataGridView.Rows.Add(dados[0], dados[1]);
@@ -461,6 +465,66 @@ namespace PONTO.BOT.Funcoes
                         if (dados.Count() == 3)
                         {
                             dataGridView.Rows.Add(dados[0], dados[1], dados[2]);
+                        }
+                        if (dados.Count() == 4)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3]);
+                        }
+                        if (dados.Count() == 5)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4]);
+                        }
+                        if (dados.Count() == 6)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
+                        }
+                        if (dados.Count() == 7)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6]);
+                        }
+                        if (dados.Count() == 8)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7]);
+                        }
+                        if (dados.Count() == 9)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8]);
+                        }
+                        if (dados.Count() == 10)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9]);
+                        }
+                        if (dados.Count() == 11)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10]);
+                        }
+                        if (dados.Count() == 12)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11]);
+                        }
+                        if (dados.Count() == 13)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12]);
+                        }
+                        if (dados.Count() == 14)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12], dados[13]);
+                        }
+                        if (dados.Count() == 15)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12], dados[13], dados[14]);
+                        }
+                        if (dados.Count() == 16)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12], dados[13], dados[14], dados[15]);
+                        }
+                        if (dados.Count() == 17)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12], dados[13], dados[14], dados[15], dados[16]);
+                        }
+                        if (dados.Count() == 18)
+                        {
+                            dataGridView.Rows.Add(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5], dados[6], dados[7], dados[8], dados[9], dados[10], dados[11], dados[12], dados[13], dados[14], dados[15], dados[16], dados[17]);
                         }
                     }
                     catch (Exception ex)

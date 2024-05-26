@@ -41,6 +41,8 @@
             lblTotal = new Label();
             label1 = new Label();
             txtCorpoMsg = new TextBox();
+            BtnPausarAcao = new Button();
+            BtnCancelar = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvImportBase).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             // 
             BtnCarregarLayout.Location = new Point(173, 21);
             BtnCarregarLayout.Name = "BtnCarregarLayout";
-            BtnCarregarLayout.Size = new Size(136, 23);
+            BtnCarregarLayout.Size = new Size(119, 23);
             BtnCarregarLayout.TabIndex = 1;
             BtnCarregarLayout.Text = "Carregar Layout";
             BtnCarregarLayout.UseVisualStyleBackColor = true;
@@ -66,9 +68,9 @@
             // 
             // BtnImportaBase
             // 
-            BtnImportaBase.Location = new Point(315, 21);
+            BtnImportaBase.Location = new Point(298, 21);
             BtnImportaBase.Name = "BtnImportaBase";
-            BtnImportaBase.Size = new Size(136, 23);
+            BtnImportaBase.Size = new Size(107, 23);
             BtnImportaBase.TabIndex = 2;
             BtnImportaBase.Text = "Importa Base";
             BtnImportaBase.UseVisualStyleBackColor = true;
@@ -76,9 +78,9 @@
             // 
             // btnDispararAcao
             // 
-            btnDispararAcao.Location = new Point(457, 21);
+            btnDispararAcao.Location = new Point(411, 21);
             btnDispararAcao.Name = "btnDispararAcao";
-            btnDispararAcao.Size = new Size(136, 23);
+            btnDispararAcao.Size = new Size(114, 23);
             btnDispararAcao.TabIndex = 3;
             btnDispararAcao.Text = "Disparar Ação";
             btnDispararAcao.UseVisualStyleBackColor = true;
@@ -97,7 +99,7 @@
             // 
             progressBar1.Location = new Point(-1, 437);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(804, 14);
+            progressBar1.Size = new Size(804, 10);
             progressBar1.TabIndex = 5;
             // 
             // lblLayout
@@ -162,11 +164,33 @@
             txtCorpoMsg.Size = new Size(211, 335);
             txtCorpoMsg.TabIndex = 18;
             // 
+            // BtnPausarAcao
+            // 
+            BtnPausarAcao.Location = new Point(531, 21);
+            BtnPausarAcao.Name = "BtnPausarAcao";
+            BtnPausarAcao.Size = new Size(96, 23);
+            BtnPausarAcao.TabIndex = 19;
+            BtnPausarAcao.Text = "Pausar Ação";
+            BtnPausarAcao.UseVisualStyleBackColor = true;
+            BtnPausarAcao.Click += BtnPausarAcao_Click;
+            // 
+            // BtnCancelar
+            // 
+            BtnCancelar.Location = new Point(633, 21);
+            BtnCancelar.Name = "BtnCancelar";
+            BtnCancelar.Size = new Size(96, 23);
+            BtnCancelar.TabIndex = 20;
+            BtnCancelar.Text = "Cancelar Ação";
+            BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Click += BtnCancelar_Click;
+            // 
             // FrmDisparosAcao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 487);
+            Controls.Add(BtnCancelar);
+            Controls.Add(BtnPausarAcao);
             Controls.Add(txtCorpoMsg);
             Controls.Add(lblLayout);
             Controls.Add(label4);
@@ -203,5 +227,7 @@
         private Label lblTotal;
         private Label label1;
         private TextBox txtCorpoMsg;
+        private Button BtnPausarAcao;
+        private Button BtnCancelar;
     }
 }
