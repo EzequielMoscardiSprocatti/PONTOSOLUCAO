@@ -452,7 +452,7 @@ namespace PONTO.BOT.Funcoes
 
                     try
                     {
-                        string[] dados = line.Split(';', ',');
+                        string[] dados = line.Split(';');
 
                         if (dados.Count() == 1)
                         {

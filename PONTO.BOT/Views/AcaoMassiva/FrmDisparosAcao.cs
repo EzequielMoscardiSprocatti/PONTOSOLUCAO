@@ -121,7 +121,8 @@ namespace PONTO.BOT.Views.AcaoMassiva
                         txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente),
                         DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
 
-                    System.Threading.Thread.Sleep(10);
+                  
+
                     try
                     {
                         DgvImportBase.Rows[i].Cells["StatusEnvio"].Value = result;
