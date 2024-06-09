@@ -158,7 +158,8 @@ namespace PONTO.SERVICOS.API
                 mail.From = new MailAddress("emkt@emkt.pontopromotora.com.br", "Ponto Promotora");
                 mail.To.Add(new MailAddress(acaoMkt.Email.Replace(">", "").Replace("<", "").Replace("\n", "").Replace(" ", ""), acaoMkt.Email.Replace(">", "").Replace("<", "").Replace("\n", "").Replace(" ", "")));
                 mail.Subject = TituloEmail;
-                mail.Body = "Olá " + acaoMkt.NomeCliente + " Tudo Bem! <br/> " + CorpoEmail + "<br/>" + assinatura;
+                //mail.Body = "Olá " + acaoMkt.NomeCliente + " Tudo Bem! <br/> " + CorpoEmail + "<br/>" + assinatura;
+                mail.Body = "Olá Tudo Bem! <br/> " + CorpoEmail + "<br/>";
                 mail.IsBodyHtml = true;
                 mail.Priority = MailPriority.High;
 
