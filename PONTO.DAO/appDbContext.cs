@@ -10,6 +10,14 @@ namespace PONTO.DAO
 {
     public class appDbContext : DbContext
     {
+        public appDbContext()
+        {
+        }
+
+        public appDbContext(DbContextOptions<appDbContext> options) : base(options)
+        {
+
+        }
 
         public DbSet<Beneficios> Beneficios { get; set; }
 

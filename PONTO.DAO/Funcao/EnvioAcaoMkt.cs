@@ -9,7 +9,9 @@ namespace PONTO.DAO.Funcao
 {
     public class EnvioAcaoMkt
     {
-        appDbContext db = new appDbContext();
+        public EnvioAcaoMkt() { }
+
+        appDbContext db = new();
         public async Task<DisparosAcaoMkt> InsertDados(DisparosAcaoMkt disparosAcao)
         {
 

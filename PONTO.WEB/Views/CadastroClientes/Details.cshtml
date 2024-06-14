@@ -1,0 +1,50 @@
+﻿@model PONTO.DOMAIN.Entidades.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Detalhes do Cliente</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nome)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Nome)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CPF)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.CPF)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.RG)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.RG)</dd>
+
+            <dt class="col-sm-3">Data de Nascimento</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DataNascimento)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Aposentado)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Aposentado)</dd>
+
+            <dt class="col-sm-3">Nome da Mãe</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.NomeMae)</dd>
+
+            <dt class="col-sm-3">Nome do Pai</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.NomePai)</dd>
+
+            <dt class="col-sm-3">Local de Nascimento</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.LocalNasc)</dd>
+
+            <dt class="col-sm-3">Status Cadastro</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.StatusCad)</dd>
+
+            <dt class="col-sm-3">Data de Cadastro</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.DataCadastro)</dd>
+        </dl>
+    </div>
+    <div class="card-footer text-end">
+        <a asp-action="Edit" asp-route-id="@Model?.IdCliente" class="btn btn-primary me-2">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
+
