@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PONTO.DAO;
 using PONTO.DOMAIN.Entidades;
+using PONTO.WEB.Models;
 
 namespace PONTO.WEB.Controllers
 {
@@ -28,6 +29,9 @@ namespace PONTO.WEB.Controllers
         // GET: CadastroClientes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ClienteViewsModel clienteViews = new ClienteViewsModel();
+
+
             if (id == null)
             {
                 return NotFound();
@@ -35,12 +39,26 @@ namespace PONTO.WEB.Controllers
 
             var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.IdCliente == id);
+
+
             if (cliente == null)
             {
                 return NotFound();
             }
 
-            return View(cliente);
+            clienteViews.Emails = _context.Emails.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.Telefones = _context.Telefones.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.Enderecos = _context.Enderecos.Where(a =>a.CPF == cliente.CPF).ToList();
+            clienteViews.DisparosAcaos = _context.disparosAcaos.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.ResultadoBots = _context.resultadoBots.Where(a => a.CPF == cliente.CPF).ToList();
+
+
+            clienteViews.Cliente = cliente;
+
+
+
+
+            return View(clienteViews);
         }
 
         // GET: CadastroClientes/Create
@@ -68,6 +86,8 @@ namespace PONTO.WEB.Controllers
         // GET: CadastroClientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ClienteViewsModel clienteViews = new ClienteViewsModel();
+
             if (id == null)
             {
                 return NotFound();
@@ -78,7 +98,13 @@ namespace PONTO.WEB.Controllers
             {
                 return NotFound();
             }
-            return View(cliente);
+
+            clienteViews.Emails = _context.Emails.Where(a => a.CPF == cliente.CPF).ToList();
+
+
+            clienteViews.Cliente = cliente;
+
+            return View(clienteViews);
         }
 
         // POST: CadastroClientes/Edit/5
@@ -86,23 +112,46 @@ namespace PONTO.WEB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Nome,CPF,RG,DataNascimento,Aposentado,NomeMae,NomePai,LocalNasc,StatusCad,DataCadastro")] Cliente cliente)
+        //public async Task<IActionResult> Edit(int id, [Bind("IdCliente,Nome,CPF,RG,DataNascimento,Aposentado,NomeMae,NomePai,LocalNasc,StatusCad,DataCadastro")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, ClienteViewsModel DadosCliente)
         {
-            if (id != cliente.IdCliente)
+            if (id != DadosCliente.Cliente.IdCliente)
             {
                 return NotFound();
+            }
+
+            if(DadosCliente.Emails != null)
+            {
+                try
+                {
+                    for (int i = 0; i < DadosCliente.Emails.Count; i++)
+                    {
+                        var email = _context.Emails.FirstOrDefault(e => e.IdEmail == DadosCliente.Emails[i].IdEmail);
+                        if (email != null)
+                        {
+                            email.EmailCliente = DadosCliente.Emails[i].EmailCliente;
+                        }
+                        _context.Update(email);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(cliente);
+                    _context.Update(DadosCliente.Cliente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.IdCliente))
+                    if (!ClienteExists(DadosCliente.Cliente.IdCliente))
                     {
                         return NotFound();
                     }
@@ -113,7 +162,8 @@ namespace PONTO.WEB.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cliente);
+
+            return View(DadosCliente);
         }
 
         // GET: CadastroClientes/Delete/5

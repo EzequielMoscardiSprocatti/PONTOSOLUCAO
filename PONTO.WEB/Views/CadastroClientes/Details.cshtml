@@ -1,4 +1,5 @@
-﻿@model PONTO.DOMAIN.Entidades.Cliente
+﻿@* @model PONTO.DOMAIN.Entidades.Cliente *@
+@model PONTO.WEB.Models.ClienteViewsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -11,39 +12,265 @@
     </div>
     <div class="card-body">
         <dl class="row mb-0">
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Nome)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Nome)</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Cliente.Nome)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Nome)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CPF)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.CPF)</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Cliente.CPF)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.CPF)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.RG)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.RG)</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Cliente.RG)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.RG)</dd>
 
             <dt class="col-sm-3">Data de Nascimento</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.DataNascimento)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.DataNascimento)</dd>
 
-            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Aposentado)</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Aposentado)</dd>
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Cliente.Aposentado)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.Aposentado)</dd>
 
             <dt class="col-sm-3">Nome da Mãe</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.NomeMae)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.NomeMae)</dd>
 
             <dt class="col-sm-3">Nome do Pai</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.NomePai)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.NomePai)</dd>
 
             <dt class="col-sm-3">Local de Nascimento</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.LocalNasc)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.LocalNasc)</dd>
 
             <dt class="col-sm-3">Status Cadastro</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.StatusCad)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.StatusCad)</dd>
 
             <dt class="col-sm-3">Data de Cadastro</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.DataCadastro)</dd>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Cliente.DataCadastro)</dd>
         </dl>
     </div>
+
+
+    <div class="card-header">
+        <h4 class="card-title">Contatos</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>E-Mails</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Email Cliente</th>
+                            <th>Status</th>
+                            <th>Score</th>
+                            <th>Data Cad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var email in Model.Emails)
+                        {
+                            <tr>
+                                <td>@email.EmailCliente</td>
+                                <td>@email.StatusEmail</td>
+                                <td>@email.ScoreInterno</td>
+                                <td>@email.DataCadastro</td>
+                            </tr>
+                        }
+                        @if (!Model.Emails.Any())
+                        {
+                            <tr>
+                                <td>Nenhum e-mail cadastrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h5>Telefones</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tipo Telefone</th>
+                            <th>Telefone</th>
+                            <th>Status</th>
+                            <th>Score</th>
+                            <th>Data Cad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var telefone in Model.Telefones)
+                        {
+                            <tr>
+                                <td>@telefone.TipoTelefone</td>
+                                <td>(@telefone.DD)@telefone.NumTelefone</td>
+                                <td>@telefone.StatusTelefone</td>
+                                <td>@telefone.ScoreInterno</td>
+                                <td>@telefone.DataCadastro</td>
+                            </tr>
+                        }
+                        @if (!Model.Telefones.Any())
+                        {
+                            <tr>
+                                <td>Nenhum telefone cadastrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-header">
+        <h4 class="card-title">Endereços</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-10">
+                <h5>Endereços do cliente</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>UF</th>
+                            <th>Cidade</th>
+                            <th>Bairro</th>
+                            <th>Rua</th>
+                            <th>Cep</th>
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Status</th>
+                            <th>Score</th>
+                            <th>Data Cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var enderecos in Model.Enderecos)
+                        {
+                            <tr>
+                                <td>@enderecos.Uf</td>
+                                <td>@enderecos.Cidade</td>
+                                <td>@enderecos.Bairro</td>
+                                <td>@enderecos.Rua</td>
+                                <td>@enderecos.Cep</td>
+                                <td>@enderecos.Numero</td>
+                                <td>@enderecos.Tipo</td>
+                                <td>@enderecos.StatusEndereco</td>
+                                <td>@enderecos.ScoreInterno</td>
+                                <td>@enderecos.DataCadastro</td>
+                            </tr>
+                        }
+                        @if (!Model.Emails.Any())
+                        {
+                            <tr>
+                                <td>Nenhum e-mail cadastrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card-header">
+        <h4 class="card-title">Ações de Contato</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-10">
+                <h5>Disparos de E-Mails e SMS</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Canal de Envio</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Nome do Mailing</th>
+                            <th>Status Envio</th>
+                            <th>Data Envio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var acaomkt in Model.DisparosAcaos)
+                        {
+                            <tr>
+                                <td>@acaomkt.CanalEnvio</td>
+                                <td>@acaomkt.Email</td>
+                                <td>@acaomkt.Telefone</td>
+                                <td>@acaomkt.NomeMailing</td>
+                                <td>@acaomkt.StatusEnvio</td>
+                                <td>@acaomkt.DataEnvio</td>
+                            </tr>
+                        }
+                        @if (!Model.Emails.Any())
+                        {
+                            <tr>
+                                <td>Nenhum e-mail cadastrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-header">
+        <h4 class="card-title">Resultado Bot Sefaz</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-10">
+                <h5>Retorno de pesquisa do robô</h5>
+                <table class="table table-bordered table-responsive" style="overflow-x: auto;">
+                    <thead>
+                        <tr>
+                            <th>ORGÃO</th>
+                            <th>TPVINCULO</th>
+                            <th>MBCONSIFACULTA</th>
+                            <th>MBCARTAOCREDITO</th>
+                            <th>MBCARTAOBENEF</th>
+                            <th>MDCONSIFACULTA</th>
+                            <th>MDCARTAOCREDITO</th>
+                            <th>MDCARTAOBENEF</th>
+                            <th>NUM_MATRICULA</th>
+                            <th>QTD_NUM_MAT</th>
+                            @* <th>MARGEM_5</th>
+                            <th>RESULTADO</th>
+                            <th>MENSAGEM_CONSIGNADO</th>
+                            <th>MENSAGEM_CARTAO_CREDITO</th> *@
+                            <th>DataConsulta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var bost in Model.ResultadoBots)
+                        {
+                            <tr>
+                                <td>@bost.ORGAO</td>
+                                <td>@bost.TPVINCULO</td>
+                                <td>@bost.MBCONSIFACULTA</td>
+                                <td>@bost.MBCARTAOCREDITO</td>
+                                <td>@bost.MBCARTAOBENEF</td>
+                                <td>@bost.MDCONSIFACULTA</td>
+                                <td>@bost.MDCARTAOCREDITO</td>
+                                <td>@bost.MDCARTAOBENEF</td>
+                                <td>@bost.NUM_MATRICULA</td>
+                                <td>@bost.QTD_NUM_MAT</td>
+                                @* <td>@bost.MARGEM_5</td>
+                                <td>@bost.RESULTADO</td>
+                                <td>@bost.MENSAGEM_CONSIGNADO</td>
+                                <td>@bost.MENSAGEM_CARTAO_CREDITO</td> *@
+                                <td>@bost.DataConsulta</td>
+                            </tr>
+                        }
+                        @if (!Model.Emails.Any())
+                        {
+                            <tr>
+                                <td>Nenhum e-mail cadastrado.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
     <div class="card-footer text-end">
-        <a asp-action="Edit" asp-route-id="@Model?.IdCliente" class="btn btn-primary me-2">Editar</a>
+        <a asp-action="Edit" asp-route-id="@Model?Cliente.IdCliente" class="btn btn-primary me-2">Editar</a>
         <a asp-action="Index" class="btn btn-secondary">Voltar</a>
     </div>
 </div>

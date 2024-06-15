@@ -1,4 +1,5 @@
-﻿@model PONTO.DOMAIN.Entidades.Cliente
+﻿@* @model PONTO.DOMAIN.Entidades.Cliente *@
+@model PONTO.WEB.Models.ClienteViewsModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,69 +13,71 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.Cliente.Nome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CPF)
+            @Html.DisplayNameFor(model => model.Cliente.CPF)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CPF)
+            @Html.DisplayFor(model => model.Cliente.CPF)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RG)
+            @Html.DisplayNameFor(model => model.Cliente.RG)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RG)
+            @Html.DisplayFor(model => model.Cliente.RG)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataNascimento)
+            @Html.DisplayNameFor(model => model.Cliente.DataNascimento)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataNascimento)
+            @Html.DisplayFor(model => model.Cliente.DataNascimento)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Aposentado)
+            @Html.DisplayNameFor(model => model.Cliente.Aposentado)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Aposentado)
+            @Html.DisplayFor(model => model.Cliente.Aposentado)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomeMae)
+            @Html.DisplayNameFor(model => model.Cliente.NomeMae)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomeMae)
+            @Html.DisplayFor(model => model.Cliente.NomeMae)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NomePai)
+            @Html.DisplayNameFor(model => model.Cliente.NomePai)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NomePai)
+            @Html.DisplayFor(model => model.Cliente.NomePai)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LocalNasc)
+            @Html.DisplayNameFor(model => model.Cliente.LocalNasc)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LocalNasc)
+            @Html.DisplayFor(model => model.Cliente.LocalNasc)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StatusCad)
+            @Html.DisplayNameFor(model => model.Cliente.StatusCad)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StatusCad)
+            @Html.DisplayFor(model => model.Cliente.StatusCad)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataCadastro)
+            @Html.DisplayNameFor(model => model.Cliente.DataCadastro)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataCadastro)
+            @Html.DisplayFor(model => model.Cliente.DataCadastro)
         </dd>
     </dl>
+
+
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="IdCliente" />
+        <input type="hidden" asp-for="Cliente.IdCliente" />
         <input type="submit" value="Deletar" class="btn btn-danger" /> |
         <a asp-action="Index">Voltar</a>
     </form>
