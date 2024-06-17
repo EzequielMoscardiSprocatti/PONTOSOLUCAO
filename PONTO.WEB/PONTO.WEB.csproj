@@ -229,6 +229,8 @@
     <None Include="node_modules\admin-lte\src\scss\_variables-dark.scss" />
     <None Include="node_modules\admin-lte\src\scss\_variables.scss" />
     <None Include="node_modules\admin-lte\src\utils\index.js" />
+    <None Include="wwwroot\adminlte\.cache\.eslintcache" />
+    <None Include="wwwroot\adminlte\.cache\.stylelintcache" />
   </ItemGroup>
 
   <ItemGroup>
@@ -261,6 +263,10 @@
     <TypeScriptCompile Include="node_modules\admin-lte\src\ts\push-menu.ts" />
     <TypeScriptCompile Include="node_modules\admin-lte\src\ts\treeview.ts" />
     <TypeScriptCompile Include="node_modules\admin-lte\src\ts\util\index.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\admin-lte\" />
   </ItemGroup>
 
 </Project>

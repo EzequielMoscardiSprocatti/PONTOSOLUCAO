@@ -100,6 +100,10 @@ namespace PONTO.WEB.Controllers
             }
 
             clienteViews.Emails = _context.Emails.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.Telefones = _context.Telefones.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.Enderecos = _context.Enderecos.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.DisparosAcaos = _context.disparosAcaos.Where(a => a.CPF == cliente.CPF).ToList();
+            clienteViews.ResultadoBots = _context.resultadoBots.Where(a => a.CPF == cliente.CPF).ToList();
 
 
             clienteViews.Cliente = cliente;
