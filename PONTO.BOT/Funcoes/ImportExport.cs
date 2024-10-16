@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PONTO.BOT.Funcoes
 {
     public class ImportExport
@@ -85,80 +86,80 @@ namespace PONTO.BOT.Funcoes
 
         public void ExportaExcel(DataGridView datagridview)
         {
-            int Colunas = 0;
-            int Linhas = 0;
+            //int Colunas = 0;
+            //int Linhas = 0;
 
-            Colunas = datagridview.Columns.Count;
-            Linhas = datagridview.Rows.Count;
+            //Colunas = datagridview.Columns.Count;
+            //Linhas = datagridview.Rows.Count;
 
-            for (int i = 0; i < Linhas; i++)
-            {
-                {
-                    for (int ii = 0; ii < Colunas; ii++)
-                        if (datagridview[ii, i].Value == null)
-                        {
-                            try
-                            {
-                                datagridview[ii, i].Value = "-";
+            //for (int i = 0; i < Linhas; i++)
+            //{
+            //    {
+            //        for (int ii = 0; ii < Colunas; ii++)
+            //            if (datagridview[ii, i].Value == null)
+            //            {
+            //                try
+            //                {
+            //                    datagridview[ii, i].Value = "-";
 
-                            }
-                            catch (FormatException)
-                            {
+            //                }
+            //                catch (FormatException)
+            //                {
 
-                            }
-                        }
-                }
-            }
+            //                }
+            //            }
+            //    }
+            //}
 
-            {
-                try
-                {
-                    Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
-
-
-                    if (datagridview.Rows.Count > 0)
-                    {
-                        try
-                        {
-                            XcelApp.Application.Workbooks.Add(Type.Missing);
-
-                            //Adiona o titulo da planilha
-                            for (int i = 1; i < datagridview.Columns.Count + 1; i++)
-                            {
-                                XcelApp.Cells[1, i] = datagridview.Columns[i - 1].HeaderText;
-                            }
-
-                            for (int i = 0; i < datagridview.Rows.Count - 1; i++)
-                            {
-                                for (int j = 0; j < datagridview.Columns.Count; j++)
-                                {
-                                    XcelApp.Cells[i + 2, j + 1] = datagridview.Rows[i].Cells[j].Value.ToString();
-
-                                }
-                            }
+            //{
+            //    try
+            //    {
+            //        Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
 
 
+            //        if (datagridview.Rows.Count > 0)
+            //        {
+            //            try
+            //            {
+            //                XcelApp.Application.Workbooks.Add(Type.Missing);
 
-                            XcelApp.Columns.AutoFit();
-                            XcelApp.Visible = true;
-                        }
+            //                //Adiona o titulo da planilha
+            //                for (int i = 1; i < datagridview.Columns.Count + 1; i++)
+            //                {
+            //                    XcelApp.Cells[1, i] = datagridview.Columns[i - 1].HeaderText;
+            //                }
 
-                        catch (Exception)
-                        {
-                            //MessageBox.Show("Erro ao exporta : " + ex.Message);
-                            XcelApp.Quit();
-                        }
+            //                for (int i = 0; i < datagridview.Rows.Count - 1; i++)
+            //                {
+            //                    for (int j = 0; j < datagridview.Columns.Count; j++)
+            //                    {
+            //                        XcelApp.Cells[i + 2, j + 1] = datagridview.Rows[i].Cells[j].Value.ToString();
 
-                    }
-                }
-                catch (System.Runtime.InteropServices.COMException)
-                {
+            //                    }
+            //                }
 
-                }
 
-            }
 
-            MessageBox.Show("Relatório Exportado", "Sistema - Robo");
+            //                XcelApp.Columns.AutoFit();
+            //                XcelApp.Visible = true;
+            //            }
+
+            //            catch (Exception)
+            //            {
+            //                //MessageBox.Show("Erro ao exporta : " + ex.Message);
+            //                XcelApp.Quit();
+            //            }
+
+            //        }
+            //    }
+            //    catch (System.Runtime.InteropServices.COMException)
+            //    {
+
+            //    }
+
+            //}
+
+            //MessageBox.Show("Relatório Exportado", "Sistema - Robo");
         }
 
         public void ImportTxt_ponto_virgular(DataGridView dataGridView)

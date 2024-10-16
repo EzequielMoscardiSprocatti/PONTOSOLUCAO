@@ -56,5 +56,11 @@ namespace PONTO.BOT.Views
             FrmDisparosAcao frmDisparos = new FrmDisparosAcao();
             frmDisparos.Show();
         }
+
+        private void arquivosBaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCapturaDadosPlanilhas frmCaptura = new FrmCapturaDadosPlanilhas(); 
+            frmCaptura.Show();
+        }
     }
 }
