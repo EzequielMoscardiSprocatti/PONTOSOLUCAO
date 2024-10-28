@@ -32,6 +32,10 @@ namespace PONTO.DOMAIN.Entidades
 
         [MaxLength(20)]
         public string? StatusEnvio { get; set; }
+
+        [MaxLength(50)]
+        public string? InfoAdicional { get; set; }
+
         public DateTime DataEnvio { get; set; }
     }
 }

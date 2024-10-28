@@ -29,8 +29,9 @@ namespace PONTO.BOT.Views.AcaoMassiva
                 DgvImportBase.Columns.Add("Assinatura", "Assinatura");//4
                 DgvImportBase.Columns.Add("StatusEnvio", "StatusEnvio");//5
                 DgvImportBase.Columns.Add("DataEnvio", "DataEnvio");//6
+                DgvImportBase.Columns.Add("InfoAdicional", "InfoAdicional");//7
 
-                txtCorpoMsg.Text = "Cole o HTML aqui  Você pode utilizar a tag @nome no HTML para que no momento do envio o mesmo seja trocado pelo nome do cliente carregado ao lado";
+                txtCorpoMsg.Text = "Cole o HTML aqui  Você pode utilizar a tag @nome e @infAdd no HTML para que no momento do envio o mesmo seja trocado pelo nome do cliente, ou seja adicioanado algum dado no carregamento ao lado";
             }
 
             if (cbxTemplate.Text == "SMS")
@@ -100,8 +101,9 @@ namespace PONTO.BOT.Views.AcaoMassiva
                         CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
                         DataEnvio = DateTime.Now,
                         Email = DgvImportBase.Rows[i].Cells["Email"].Value.ToString(),
-                        NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString()
-                        
+                        NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString(),
+                        InfoAdicional = DgvImportBase.Rows[i].Cells["InfoAdicional"].Value.ToString()
+
                     };
 
                     try
@@ -118,7 +120,7 @@ namespace PONTO.BOT.Views.AcaoMassiva
 
                     var result = await AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "",
                         DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(),
-                        txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente),
+                        txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente).Replace("@infAdd", envioAcao.NomeCliente).Replace("@INFADD", envioAcao.NomeCliente),
                         DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
 
                   
