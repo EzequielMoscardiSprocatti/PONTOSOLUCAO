@@ -101,7 +101,7 @@ namespace PONTO.BOT.Views.AcaoMassiva
                         CPF = DgvImportBase.Rows[i].Cells["CPF"].Value.ToString(),
                         DataEnvio = DateTime.Now,
                         Email = DgvImportBase.Rows[i].Cells["Email"].Value.ToString(),
-                        NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value.ToString(),
+                        NomeCliente = DgvImportBase.Rows[i].Cells["NomeCliente"].Value?.ToString() ?? string.Empty,
                         InfoAdicional = DgvImportBase.Rows[i].Cells["InfoAdicional"].Value?.ToString() ?? string.Empty
 
                     };
