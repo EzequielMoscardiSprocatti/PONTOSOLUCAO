@@ -120,7 +120,7 @@ namespace PONTO.BOT.Views.AcaoMassiva
 
                     var result = await AcaoEmailMkt.EnvioViaSSMTPAsync(envioAcao, "",
                         DgvImportBase.Rows[i].Cells["Assunto"].Value.ToString(),
-                        txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente).Replace("@infAdd", envioAcao.NomeCliente).Replace("@INFADD", envioAcao.NomeCliente),
+                        txtCorpoMsg.Text.Replace("@nome", envioAcao.NomeCliente).Replace("@Nome", envioAcao.NomeCliente).Replace("@NOME", envioAcao.NomeCliente).Replace("@infAdd", envioAcao.InfoAdicional).Replace("@INFADD", envioAcao.InfoAdicional),
                         DgvImportBase.Rows[i].Cells["Assinatura"].Value.ToString());
 
                   
@@ -141,6 +141,7 @@ namespace PONTO.BOT.Views.AcaoMassiva
 
                 UpdateProgressBar(progressBar1, i);
                 UpdateLblTotalFeito(lblTotalFeito, i);
+                System.Threading.Thread.Sleep(4500);
 
                 while (PausarAcao)
                 {
