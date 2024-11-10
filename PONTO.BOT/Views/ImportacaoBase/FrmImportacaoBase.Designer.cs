@@ -41,6 +41,8 @@
             label4 = new Label();
             lblLayout = new Label();
             BtnBulk = new Button();
+            CaminhosTxtArq = new TextBox();
+            btnProcLoteTxt = new Button();
             ((System.ComponentModel.ISupportInitialize)DgvImportBase).BeginInit();
             SuspendLayout();
             // 
@@ -48,9 +50,9 @@
             // 
             DgvImportBase.BackgroundColor = Color.White;
             DgvImportBase.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvImportBase.Location = new Point(0, 91);
+            DgvImportBase.Location = new Point(-1, 91);
             DgvImportBase.Name = "DgvImportBase";
-            DgvImportBase.Size = new Size(800, 337);
+            DgvImportBase.Size = new Size(911, 337);
             DgvImportBase.TabIndex = 0;
             // 
             // cbxTemplate
@@ -97,7 +99,7 @@
             // 
             progressBar.Location = new Point(0, 428);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(800, 10);
+            progressBar.Size = new Size(914, 10);
             progressBar.TabIndex = 5;
             // 
             // label1
@@ -164,11 +166,30 @@
             BtnBulk.UseVisualStyleBackColor = true;
             BtnBulk.Click += BtnBulk_Click;
             // 
+            // CaminhosTxtArq
+            // 
+            CaminhosTxtArq.Location = new Point(671, 60);
+            CaminhosTxtArq.Name = "CaminhosTxtArq";
+            CaminhosTxtArq.Size = new Size(226, 23);
+            CaminhosTxtArq.TabIndex = 14;
+            // 
+            // btnProcLoteTxt
+            // 
+            btnProcLoteTxt.Location = new Point(733, 22);
+            btnProcLoteTxt.Name = "btnProcLoteTxt";
+            btnProcLoteTxt.Size = new Size(164, 23);
+            btnProcLoteTxt.TabIndex = 15;
+            btnProcLoteTxt.Text = "Processo Lote Txt";
+            btnProcLoteTxt.UseVisualStyleBackColor = true;
+            btnProcLoteTxt.Click += btnProcLoteTxt_Click;
+            // 
             // FrmImportacaoBase
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 457);
+            ClientSize = new Size(909, 457);
+            Controls.Add(btnProcLoteTxt);
+            Controls.Add(CaminhosTxtArq);
             Controls.Add(BtnBulk);
             Controls.Add(lblLayout);
             Controls.Add(label4);
@@ -204,5 +225,7 @@
         private Label label4;
         private Label lblLayout;
         private Button BtnBulk;
+        private TextBox CaminhosTxtArq;
+        private Button btnProcLoteTxt;
     }
 }

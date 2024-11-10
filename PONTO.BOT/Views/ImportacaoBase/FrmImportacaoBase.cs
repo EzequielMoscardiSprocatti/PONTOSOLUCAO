@@ -354,9 +354,28 @@ namespace PONTO.BOT.Views.ImportacaoBase
 
             using (var dbContext = new appDbContext())
             {
-                dbContext.BulkInsert(dadosList); 
+                dbContext.BulkInsert(dadosList);
             }
 
+        }
+
+
+        private void btnProcLoteTxt_Click(object sender, EventArgs e)
+        {
+
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    CaminhosTxtArq.Text = folderDialog.SelectedPath;
+                }
+
+            }
+
+            if (cbxTemplate.Text == "CLIENTE")
+            {
+                ImportacaoCliente.ImportarTxtsParaBancoEmLote(CaminhosTxtArq.Text);
+            }
         }
     }
 }
